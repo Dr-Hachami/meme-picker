@@ -1,4 +1,4 @@
-import { catsData } from '/data.js'
+import { catsData } from './data.js'
 
 const emotionRadios = document.getElementById('emotion-radios')
 const getImageBtn = document.getElementById('get-image-btn')
@@ -9,19 +9,13 @@ const memeModalCloseBtn = document.getElementById('meme-modal-close-btn')
 
 emotionRadios.addEventListener('change', highlightCheckedOption)
 
-getImageBtn.addEventListener('click', renderCat)
-
 memeModalCloseBtn.addEventListener('click', closeModal)
+
+getImageBtn.addEventListener('click', renderCat)
 
 function closeModal(){
     memeModal.style.display = 'none'
 }
-
-/*
-Challenge:
-1. Wire up the X button in the modal so
-   it closes the modal.
-*/ 
 
 function highlightCheckedOption(e){
     const radios = document.getElementsByClassName('radio')
@@ -64,23 +58,20 @@ function getSingleCatObject(){
 function renderCat(){
     const catObject = getSingleCatObject()
     if (!catObject.image.includes('http')){
-         memeModalInner.innerHTML =  `
-        <img 
-        class="cat-img" 
-        src="./images/${catObject.image}"
-        alt="${catObject.alt}"
-        >
-        `
-    }else{
-         memeModalInner.innerHTML =  `
-        <img 
-        class="cat-img" 
-        src="${catObject.image}"
-        alt="${catObject.alt}"
-        >
-        `
-    }
-   
+        memeModalInner.innerHTML =  `
+       <img 
+       class="cat-img" 
+       src="./images/${catObject.image}"
+       alt="${catObject.alt}"
+       >
+       `
+   }else{
+        memeModalInner.innerHTML =  `
+       <img 
+       class="cat-img" 
+       src="${catObject.image}"
+       alt="${catObject.alt}"
+       >`}
     memeModal.style.display = 'flex'
 }
 
@@ -116,8 +107,4 @@ function renderEmotionsRadios(cats){
 }
 
 renderEmotionsRadios(catsData)
-
-
-
-
 
